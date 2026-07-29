@@ -386,21 +386,22 @@ font-size: 20px;
 <h2>COMING SOON</h2>
 <p>The date is approaching fast and we're making preparations. Don't miss out!</p>
 
-<div class="countdown">
+<!-- COUNTDOWN TIMER -->
+<div id="countdown-timer" class="countdown">
 <div class="time-box">
-<span class="number">67</span>
+<span id="days" class="number">00</span>
 <span class="label">Days</span>
 </div>
 <div class="time-box">
-<span class="number">11</span>
-<span class="label">Hrs</span>
+<span id="hours" class="number">00</span>
+<span class="label">Hours</span>
 </div>
 <div class="time-box">
-<span class="number">04</span>
+<span id="minutes" class="number">00</span>
 <span class="label">Mins</span>
 </div>
 <div class="time-box">
-<span class="number">44</span>
+<span id="seconds" class="number">00</span>
 <span class="label">Secs</span>
 </div>
 </div>
@@ -522,6 +523,36 @@ Copyright Roman Cheldon 2023 - All Rights Reserved
 </a>
 </div>
 
+<!-- ========================================== -->
+<!-- YOUR SCRIPT GOES RIGHT HERE -->
+<script>
+// 1. Set your launch date here!
+var launchDate = new Date("November 6, 2026 9:00:00").getTime();
+
+// 2. Update the countdown every 1 second
+var timer = setInterval(function() {
+var now = new Date().getTime();
+var distance = launchDate - now;
+
+var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+document.getElementById("days").innerHTML = days;
+document.getElementById("hours").innerHTML = hours;
+document.getElementById("minutes").innerHTML = minutes;
+document.getElementById("seconds").innerHTML = seconds;
+
+if (distance < 0) {
+clearInterval(timer);
+document.getElementById("countdown-timer").innerHTML = "<h3 style='color: white;'>WE ARE LIVE!</h3>";
+}
+}, 1000);
+</script>
+<!-- ========================================== -->
+
 </body>
 </html>
+
 
