@@ -37,27 +37,69 @@ max-width: 100%;
 display: block;
 }
 
-/* --- HEADER --- */
 header {
 display: flex;
 align-items: center;
-justify-content: center;
-padding: 15px 20px;
+justify-content: space-between;
+padding: 15px 25px;
 position: relative;
 }
 
 .hamburger {
-position: absolute;
-top: 15px; /* This controls the gap at the top! */
-left: 20px;
-font-size: 36px;
+font-size: 28px;
 cursor: pointer;
 color: var(--white);
+z-index: 9999;
+position: absolute;
+top: 15px;
+left: 20px;
 }
 
-.logo-small {
-height: 150px; /* Placeholder size */
+/* Logo ko perfectly center aur clear rakhne ke liye */
+header img {
+height: 200px; /* Isko aap 100px ya 120px karke apne hisab se bada kar sakte hain */
+width: auto;
+display: block;
+margin: 0 auto; /* Yeh automatically bilkul beech mein le ayega bina crop kiye */
 }
+
+/* Ek chhota invisible box balance ke liye taaki logo bilkul center mein rahe */
+.header-spacer {
+width: 28px;
+}
+
+.nav-links {
+display: none;
+flex-direction: column;
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+height: 100vh;
+background-color: var(--black);
+padding-top: 80px;
+z-index: 999;
+}
+
+.nav-links a {
+color: var(--white);
+text-decoration: none;
+font-size: 18px;
+padding: 10px 0;
+display: block;
+letter-spacing: 1px;
+text-align: left;
+border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.nav-links a:hover {
+color: var(--gold);
+}
+
+.nav-links.active {
+display: flex;
+}
+/* -------------------------------------- */
 
 /* --- HERO SECTION --- */
 .hero {
@@ -369,11 +411,24 @@ font-size: 20px;
 </head>
 <body>
 
-<!-- HEADER -->
 <header>
-<div class="hamburger">&#9776;</div>
-<!-- Replace placeholder with actual logo -->
-<img src="images/logo.png" style="width: 150px; height: auto;">
+<div class="hamburger" onclick="toggleMenu()">
+<i class="fas fa-bars"></i>
+</div>
+
+<img src="images/logo.png" alt="Roman Cheldon Logo">
+
+<div class="header-spacer"></div>
+
+<!-- Navigation Menu Links -->
+<nav id="mobile-menu" class="nav-links">
+<a href="#mens">MEN</a>
+<a href="#women">WOMEN</a>
+<a href="#about">CORPORATE</a>
+<a href="#about">EXPLORE</a>
+<a href="#about">GUIDES</a>
+<a href="#contact">ABOUT US</a>
+</nav>
 </header>
 
 <!-- HERO -->
@@ -514,7 +569,7 @@ We are building more than a leather brand—we are creating a legacy of craftsma
 </div>
 <div class="divider"></div>
 <div class="copyright">
-Copyright Roman Cheldon 2023 - All Rights Reserved
+Copyright Roman Cheldon 2026 - All Rights Reserved
 </div>
 </footer>
 
@@ -553,6 +608,12 @@ document.getElementById("countdown-timer").innerHTML = "<h3 style='color: white;
 }, 1000);
 </script>
 <!-- ========================================== -->
+<script>
+function toggleMenu() {
+const menu = document.getElementById("mobile-menu");
+menu.classList.toggle("active");
+}
+</script>
 
 </body>
 </html>
