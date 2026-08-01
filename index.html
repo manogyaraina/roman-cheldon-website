@@ -313,19 +313,31 @@ box-shadow: 0px 2px 5px rgba(0,0,0,0.2); /* Thodi si shadow chamkane ke liye */
 }
 
 .country-selector i {
-color: #000;
-font-size: 16px;
+color: var(--gold);
+}
+
+.country-selector {
+background: transparent !important;
+border: none !important;
+padding: 0 !important;
+box-shadow: none !important;
 }
 
 .country-selector select {
 background: transparent;
-color: #000;
+color: var(--beige); /* Aapke gold color ke liye */
 border: none;
+font-family: var(--font-heading);
 font-size: 14px;
-font-weight: bold;
-outline: none;
 cursor: pointer;
+outline: none;
 }
+
+/* Agar search ya cart icon ko HTML se hatana hai, toh unke tags ko mita dena ya yeh CSS laga dena */
+.search-icon, .cart-icon {
+display: none !important;
+}
+
 
 /* --- CATEGORIES SECTION --- */
 .categories {
@@ -473,14 +485,14 @@ opacity: 0;
 
 <!-- Country Selector -->
 <div class="country-selector">
-<i class="fa-solid fa-globe"></i>
 <select id="country-select">
-<option value="IN">🇮🇳 IND (₹)</option>
-<option value="US">🇺🇸 USA ($)</option>
-<option value="UK">🇬🇧 UK (£)</option>
-<option value="EU">🇪🇺 EUR (€)</option>
+<option value="IN">&#127471;&#127472; INR (₹)</option>
+<option value="US">&#127482;&#127480; USD ($)</option>
+<option value="UK">&#127468;&#127463; GBP (£)</option>
+<option value="EU">&#127466;&#127482; EUR (€)</option>
 </select>
 </div>
+
 
 <header>
 <div class="hamburger" onclick="toggleMenu()">
