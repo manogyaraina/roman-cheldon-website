@@ -30,7 +30,7 @@ line-height: 1.5;
 text-align: center;
 -webkit-text-size-adjust: 100%;
 text-size-adjust: 100%;
-padding-top: 100px;
+padding-top: 0;
 }
 
 img {
@@ -42,8 +42,12 @@ header {
 display: flex;
 align-items: center;
 justify-content: space-between;
-padding: 15px 25px;
-position: relative;
+padding: 5px 20px !important;
+min-height: auto !important;
+}
+
+.header-spacer { 
+display: none !important;
 }
 
 .hamburger {
@@ -102,24 +106,18 @@ display: flex;
 }
 /* -------------------------------------- */
 
-/* --- HERO SECTION --- */
 .hero {
-padding: 20px 0;
-}
-
-.hero h1 {
-color: var(--gold);
-font-family: var(--font-heading);
-font-size: 35px;
-margin-bottom: 20px;
-letter-spacing: 0.5px;
+width: 100%;
+margin-top: 0px;
+overflow: hidden;
 }
 
 .hero-image {
 width: 100%;
 height: auto;
-background: #222; /* Fallback */
-object-fit: contain;
+max-height: 500px;
+object-fit: cover;
+display: block;
 }
 
 /* --- COMING SOON SECTION --- */
@@ -313,7 +311,7 @@ box-shadow: 0px 2px 5px rgba(0,0,0,0.2); /* Thodi si shadow chamkane ke liye */
 }
 
 .country-selector i {
-color: var(--gold);
+color: var(--Beige);
 }
 
 .country-selector {
@@ -324,8 +322,8 @@ box-shadow: none !important;
 }
 
 .country-selector select {
-background: transparent;
-color: var(--beige); /* Aapke gold color ke liye */
+background-color: #050505;
+color: var(--beige);
 border: none;
 font-family: var(--font-heading);
 font-size: 14px;
@@ -459,52 +457,65 @@ font-size: 20px;
 }
 
 header {
-position: fixed;
+position: relative;
 top: 0;
 width: 100%;
 z-index: 9998; /* Country selector ke niche par baaki sabse upar */
-transition: all 0.4s ease-in-out;
+transition: all 0.8s ease-in-out;
 background-color: #050505; /* Aapka default black background */
 padding-bottom: 20px; /* Default height */
 }
 
 header.shrink {
-transform: translateY(-100%); /* Yeh header ko dheere se upar ki taraf dhakel dega */
-opacity: 0; /* Yeh usko dheere-dheere gayab (transparent) kar dega */
-padding-bottom: 0px !important; /* Size chota karne ke liye */
+transform: translateY(-100%) !important;
+opacity: 0; 
+padding-bottom: 0px !important;
 }
 
-/* Scroll karne par logo ki setting (Agar aapne yeh pehle lagaya tha toh rehne dein) */
 header.shrink img {
 transform: scale(0.5);
 opacity: 0;
 }
+
+header {
+height: auto !important;
+min-height: 0 !important;
+max-height: none !important;
+padding: 5px 0 !important;
+margin: 0 !important;
+}
+
+body header {
+padding-top: 5px !important;
+padding-bottom: 5px !important;
+}
+
 </style>
 </head>
 <body>
 
 <!-- Country Selector -->
 <div class="country-selector">
+<i class="fa-solid fa-globe"></i>
 <select id="country-select">
-<option value="IN">&#127471;&#127472; INR (₹)</option>
-<option value="US">&#127482;&#127480; USD ($)</option>
-<option value="UK">&#127468;&#127463; GBP (£)</option>
-<option value="EU">&#127466;&#127482; EUR (€)</option>
+<option value="IN">🇮🇳 IND (₹)</option>
+<option value="US">🇺🇸 USA ($)</option>
+<option value="UK">🇬🇧 UK (£)</option>
+<option value="EU">🇪🇺 EUR (€)</option>
 </select>
 </div>
-
 
 <header>
 <div class="hamburger" onclick="toggleMenu()">
 <i class="fas fa-bars"></i>
 </div>
 
-<div style="display: flex; flex-direction: column; align-items: center; width: 100%;">
+<div style="display: flex; flex-direction: column; align-items: center; width: 100%; padding: 0; margin: 0;">
 <img src="images/logo.png" alt="Roman Cheldon Logo">
-<h2 style="color: var(--gold);margin-top: 10px; font-family: var(--font-heading); font-size: 28px;">Redefined Leather Essentials</h2>
+<h2 style="color: var(--gold); margin-top: 10px; font-family: var(--font-heading); font-size: 28px;">Redefined Leather Essentials</h2>
 </div>
 
-<div class="header-spacer"></div>
+<!-- <div class="header-spacer"></div> -->
 
 <!-- Navigation Menu Links -->
 <nav id="mobile-menu" class="nav-links">
@@ -519,9 +530,8 @@ opacity: 0;
 
 <!-- HERO -->
 <section class="hero">
-<h1 style="font-size: 30px;">Redefined Leather Essentials</h1>
 <!-- Replace placeholder with actual hero image -->
-<img src="images/Handicraft.png" alt="Leather Craftsman" class="hero-image" style="width: 100%; height: auto; object-fit: contain;">
+<img src="images/Handicraft.png" alt="Leather Craftsman" class="hero-image">
 </section>
 
 <!-- COMING SOON -->
