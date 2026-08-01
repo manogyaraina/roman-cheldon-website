@@ -30,6 +30,7 @@ line-height: 1.5;
 text-align: center;
 -webkit-text-size-adjust: 100%;
 text-size-adjust: 100%;
+padding-top: 100px;
 }
 
 img {
@@ -60,7 +61,7 @@ header img {
 height: 200px; /* Isko aap 100px ya 120px karke apne hisab se bada kar sakte hain */
 width: auto;
 display: block;
-margin: 0 auto; /* Yeh automatically bilkul beech mein le ayega bina crop kiye */
+margin: 0 auto;
 }
 
 /* Ek chhota invisible box balance ke liye taaki logo bilkul center mein rahe */
@@ -242,51 +243,88 @@ font-size: 14px;
 text-decoration: none;
 }
 
-/* --- NEWSLETTER SECTION --- */
 .newsletter {
-padding: 150px 70px;
-background-color: var(--black);
+background-color: #1a1a1a;
+padding: 100px 20px;
+text-align: center;
+color: #ffffff;
+height: auto !important;
+box-sizing: border-box;
 }
 
-.newsletter p {
-font-size: 20px;
-margin-bottom: 30px;
-line-height: 1.5;
-padding: 0 10px;
+/* 2. Premium Stacked Form (Ek ke neeche ek) */
+.newsletter-section {
+display: flex;
+flex-direction: column; /* Email upar, button neeche */
+align-items: center;
+max-width: 700px; /* Box ki lambai */
+margin: 30px auto 0 auto;
+gap: 15px;
+width: 90%;
 }
 
-.form-group {
-margin-bottom: 20px;
-text-align: left;
-}
-
-.form-group input {
+/* 3. Email Input - Sirf Bottom Line */
+#user-email {
 width: 100%;
-background: transparent;
+padding: 10px 0px;
 border: none;
-border-bottom: 1px solid var(--white);
-color: var(--white);
-padding: 10px 0;
+border-bottom: 1px solid #fff; /* Sirf neeche ki white line */
+background-color: transparent;
+color: #fff;
 font-size: 14px;
 outline: none;
 }
 
-.form-group input::placeholder {
-color: #aaa;
+#user-email::placeholder {
+color: #fff;
 font-size: 12px;
 }
 
-.btn-subscribe {
+.newsletter-section button {
 width: 100%;
-background-color: var(--cream);
-color: var(--black);
+padding: 15px 0;
+background-color: #f5f5f5;
+color: #000;
 border: none;
-padding: 15px;
-font-size: 20px;
-font-weight: bold;
-letter-spacing: 1px;
 cursor: pointer;
+font-size: 14px;
+font-weight: 600;
+letter-spacing: 2px;
 text-transform: uppercase;
+transition: all 0.3s ease;
+}
+
+.newsletter-section button:hover {
+background-color: #d1d1d1;
+}
+
+.country-selector {
+position: absolute;
+top: 20px;
+right: 20px;
+display: flex;
+align-items: center;
+gap: 8px;
+z-index: 9999 !important;
+background-color: #F5F5DC;
+padding: 5px 10px;
+border-radius: 5px;
+box-shadow: 0px 2px 5px rgba(0,0,0,0.2); /* Thodi si shadow chamkane ke liye */
+}
+
+.country-selector i {
+color: #000;
+font-size: 16px;
+}
+
+.country-selector select {
+background: transparent;
+color: #000;
+border: none;
+font-size: 14px;
+font-weight: bold;
+outline: none;
+cursor: pointer;
 }
 
 /* --- CATEGORIES SECTION --- */
@@ -407,16 +445,52 @@ box-shadow: 0 4px 6px rgba(0,0,0,0.1);
 cursor: pointer;
 font-size: 20px;
 }
+
+header {
+position: fixed;
+top: 0;
+width: 100%;
+z-index: 9998; /* Country selector ke niche par baaki sabse upar */
+transition: all 0.4s ease-in-out;
+background-color: #050505; /* Aapka default black background */
+padding-bottom: 20px; /* Default height */
+}
+
+header.shrink {
+transform: translateY(-100%); /* Yeh header ko dheere se upar ki taraf dhakel dega */
+opacity: 0; /* Yeh usko dheere-dheere gayab (transparent) kar dega */
+padding-bottom: 0px !important; /* Size chota karne ke liye */
+}
+
+/* Scroll karne par logo ki setting (Agar aapne yeh pehle lagaya tha toh rehne dein) */
+header.shrink img {
+transform: scale(0.5);
+opacity: 0;
+}
 </style>
 </head>
 <body>
+
+<!-- Country Selector -->
+<div class="country-selector">
+<i class="fa-solid fa-globe"></i>
+<select id="country-select">
+<option value="IN">🇮🇳 IND (₹)</option>
+<option value="US">🇺🇸 USA ($)</option>
+<option value="UK">🇬🇧 UK (£)</option>
+<option value="EU">🇪🇺 EUR (€)</option>
+</select>
+</div>
 
 <header>
 <div class="hamburger" onclick="toggleMenu()">
 <i class="fas fa-bars"></i>
 </div>
 
+<div style="display: flex; flex-direction: column; align-items: center; width: 100%;">
 <img src="images/logo.png" alt="Roman Cheldon Logo">
+<h2 style="color: var(--gold);margin-top: 10px; font-family: var(--font-heading); font-size: 28px;">Redefined Leather Essentials</h2>
+</div>
 
 <div class="header-spacer"></div>
 
@@ -504,12 +578,10 @@ We are building more than a leather brand—we are creating a legacy of craftsma
 <!-- NEWSLETTER -->
 <section class="newsletter">
 <p style="font-size: 15px;">Sign up for Roman Cheldon emails and receive the latest news, including exclusive online pre-launches and new products.</p>
-<form action="#">
-<div class="form-group">
-<input type="email" placeholder="Email" required>
+<div class="newsletter-section">
+<input type="email" id="user-email" placeholder="Enter your email id" required>
+<button onclick="subscribeToGmail()">Subscribe</button>
 </div>
-<button type="submit" class="btn-subscribe">SUBSCRIBE</button>
-</form>
 </section>
 
 <!-- CATEGORIES -->
@@ -615,7 +687,69 @@ menu.classList.toggle("active");
 }
 </script>
 
+<script>
+function subscribeToGmail() {
+const emailInput = document.getElementById("user-email");
+const email = emailInput.value.trim();
+
+// Check agar email khali ya galat hai
+if (email === "" || !email.includes("@")) {
+alert("Please enter a valid email ID first.");
+return;
+}
+
+// Welcome message
+alert("Thank you for joining ROMAN CHELDON! From now onwards you will be updated with our latest collections.");
+
+// Web3Forms API Call
+fetch("https://api.web3forms.com/submit", {
+method: "POST",
+headers: {
+"Content-Type": "application/json",
+Accept: "application/json",
+},
+body: JSON.stringify({
+access_key: "2a54a2d7-2e3a-4b65-a61c-1a122c0002a7", // Tumhari asli Access Key
+email: email,
+subject: "🎉 New Subscriber for Roman Cheldon!",
+message: `You have a new subscriber! Their email ID is: ${email}`
+}),
+})
+.then(response => response.json())
+.then(data => {
+// Success hone par email box khali kar do
+emailInput.value = "";
+})
+.catch(error => {
+console.log("Error sending email:", error);
+});
+}
+// Header Scroll Effect - BULLETPROOF METHOD
+function hideHeaderOnScroll() {
+const header = document.querySelector("header");
+
+// Yeh teeno tarike se scroll check karega (Har browser/device ke liye)
+const scrollPos = window.scrollY || document.documentElement.scrollTop || document.body.scrollTop;
+
+if (scrollPos > 40) {
+// !important lagane se koi aur code isko rok nahi payega
+header.style.setProperty("transform", "translateY(-100%)", "important");
+header.style.setProperty("opacity", "0", "important");
+header.style.setProperty("pointer-events", "none", "important");
+header.style.setProperty("transition", "all 0.5s ease", "important");
+} else {
+// Wapas 0 par aane par header dikhega
+header.style.setProperty("transform", "translateY(0)", "important");
+header.style.setProperty("opacity", "1", "important");
+header.style.setProperty("pointer-events", "auto", "important");
+}
+} // <-- Yeh aapka aakhri bracket jo file mein already hai
+
+// Yeh lines scroll ko activate karengi
+window.addEventListener("scroll", hideHeaderOnScroll, true);
+document.addEventListener("scroll", hideHeaderOnScroll, true);
+</script>
+
 </body>
 </html>
-
 
