@@ -61,15 +61,13 @@ top: 15px;
 left: 20px;
 }
 
-/* Logo ko perfectly center aur clear rakhne ke liye */
 header img {
-height: 200px; /* Isko aap 100px ya 120px karke apne hisab se bada kar sakte hain */
+height: 200px;
 width: auto;
 display: block;
 margin: 0 auto;
 }
 
-/* Ek chhota invisible box balance ke liye taaki logo bilkul center mein rahe */
 .header-spacer {
 width: 28px;
 }
@@ -121,7 +119,6 @@ object-fit: cover;
 display: block;
 }
 
-/* --- COMING SOON SECTION --- */
 .coming-soon {
 padding: 40px 20px;
 }
@@ -170,7 +167,6 @@ text-transform: uppercase;
 margin-top: 5px;
 }
 
-/* --- ABOUT US SECTION --- */
 .about-us {
 background-color: var(--cream);
 color: var(--black);
@@ -251,7 +247,6 @@ height: auto !important;
 box-sizing: border-box;
 }
 
-/* 2. Premium Stacked Form (Ek ke neeche ek) */
 .newsletter-section {
 display: flex;
 flex-direction: column; /* Email upar, button neeche */
@@ -262,12 +257,11 @@ gap: 15px;
 width: 90%;
 }
 
-/* 3. Email Input - Sirf Bottom Line */
 #user-email {
 width: 100%;
 padding: 10px 0px;
 border: none;
-border-bottom: 1px solid #fff; /* Sirf neeche ki white line */
+border-bottom: 1px solid #fff;
 background-color: transparent;
 color: #fff;
 font-size: 14px;
@@ -305,38 +299,23 @@ display: flex;
 align-items: center;
 gap: 8px;
 z-index: 9999 !important;
-background-color: #F5F5DC;
-padding: 5px 10px;
-border-radius: 5px;
-box-shadow: 0px 2px 5px rgba(0,0,0,0.2); /* Thodi si shadow chamkane ke liye */
+background: transparent !important;
+background-color: transparent !important;
+border: none !important;
+padding: 0 !important;
+box-shadow: none !important;
 }
 
 .country-selector i {
 color: var(--Beige);
 }
 
-.country-selector {
-background: transparent !important;
-border: none !important;
-padding: 0 !important;
-box-shadow: none !important;
-}
-
 .country-selector select {
-background-color: #050505;
-color: var(--beige);
-border: none;
-font-family: var(--font-heading);
-font-size: 14px;
-cursor: pointer;
-outline: none;
+background: transparent !important;
+color: var(--white);
+border: none !important;
+outline: none !important;
 }
-
-/* Agar search ya cart icon ko HTML se hatana hai, toh unke tags ko mita dena ya yeh CSS laga dena */
-.search-icon, .cart-icon {
-display: none !important;
-}
-
 
 /* --- CATEGORIES SECTION --- */
 .categories {
@@ -385,7 +364,6 @@ filter: brightness(75%); /* Darkens the image slightly */
 transition: filter 0.3s ease;
 }
 
-/* This puts the text exactly in the middle */
 .category-card h3 {
 position: absolute;
 top: 50%;
@@ -400,7 +378,6 @@ text-align: center;
 width: 90%;
 }
 
-/* Optional: Makes the image slightly darker when you hover over it */
 .category-card:hover img {
 filter: brightness(50%);
 }
@@ -659,7 +636,7 @@ We are building more than a leather brand—we are creating a legacy of craftsma
 <div class="footer-content">
 <h4>Company</h4>
 <p><strong>Contact Us:</strong> Roman Cheldon</p>
-<p><strong>Customer Care:</strong> +918299132529</p>
+<p><strong>Customer Care:</strong> +918081818237</p>
 <p><strong>Email:</strong> <a href="mailto:feedback@romancheldon.com">feedback@romancheldon.com</a></p>
 </div>
 <div class="divider"></div>
@@ -670,8 +647,8 @@ Copyright Roman Cheldon 2026 - All Rights Reserved
 
 <!-- CHAT WIDGET -->
 <div class="chat-widget">
-<a href="https://wa.me/918299132529" target="_blank" style="text-decoration: none;">
-&#128172; <!-- Chat bubble unicode icon -->
+<a href="https://wa.me/918081818237" target="_blank" style="text-decoration: none;">
+<img src="images/whatsapp.png" alt="Whatsapp Chat" width="50">
 </a>
 </div>
 
